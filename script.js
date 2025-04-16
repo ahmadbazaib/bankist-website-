@@ -38,6 +38,7 @@ document.addEventListener('keydown', function (e) {
 //////////////////////////////////////////////////////
 /////////////////////////////////////////////////////
 
+/*
 //////////////////////////////////////////////
 // SELECTING, CREATING, AND DELETING ELEMENTS
 
@@ -76,3 +77,54 @@ document
     message.remove(); // new way
     // message.parentElement.removeChild(message); // old way
   });
+
+//////////////////////////////////////////////
+// STYLES, ATTRIBUTES AND CLASSES
+
+message.style.backgroundColor = '#37383d';
+message.style.width = '105%';
+
+console.log(message.style.color);
+console.log(message.style.backgroundColor);
+
+console.log(getComputedStyle(message).color);
+console.log(getComputedStyle(message).height);
+
+message.style.height =
+  Number.parseFloat(getComputedStyle(message).height) + 20 + 'px';
+
+document.documentElement.style.setProperty('--color-primary', 'orangered');
+
+// Attributues
+const logo = document.querySelector('.nav__logo');
+console.log(logo.alt);
+
+console.log(logo.className);
+
+logo.alt = 'Minimilist Logo';
+
+// Non-standard
+// console.log(logo.designer);
+// console.log(logo.getAttribute('designer'));
+
+logo.setAttribute('company', 'Bankist');
+
+console.log(logo.src);
+console.log(logo.getAttribute('src'));
+
+const link = document.querySelector('.nav__link--btn');
+console.log(link.href);
+console.log(link.getAttribute('href'));
+
+// Data-attribute
+console.log(logo.dataset.numberVersion);
+
+// Classes
+// logo.classList.add();
+// logo.classList.remove();
+// logo.classList.toggle();
+// logo.classList.contains();
+
+// Don't do this
+// logo.className = 'ahmad';
+*/
