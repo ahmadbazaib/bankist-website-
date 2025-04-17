@@ -158,7 +158,6 @@ console.log(logo.dataset.numberVersion);
 
 // Don't do this
 // logo.className = 'ahmad';
-*/
 
 //////////////////////////////////////////////
 // TYPES OF EVENTS AND EVENT HANDLER
@@ -176,3 +175,40 @@ setTimeout(() => h1.removeEventListener('mouseenter', alertH1), 5000);
 // h1.onmouseenter = function (e) {
 //   alert('onmouseenter: Good! You reading the heading');
 // };
+
+
+//////////////////////////////////////////////
+// EVENT PROPAGATION
+
+// rgb(255, 255, 255)
+const randomInt = (min, max) =>
+  Math.floor(Math.random() * (max - min + 1) + min);
+// console.log(randomInt(10, 20));
+
+const randomColor = () =>
+  `rgb(${randomInt(0, 255)},${randomInt(0, 255)},${randomInt(0, 255)})`;
+
+// console.log(randomColor());
+
+document.querySelector('.nav__link').addEventListener('click', function (e) {
+  this.style.backgroundColor = randomColor();
+  console.log('LINK', e.target, e.currentTarget);
+  console.log(e.currentTarget === this);
+
+  // Stop propagation
+  // e.stopPropagation();
+});
+
+document.querySelector('.nav__links').addEventListener('click', function (e) {
+  this.style.backgroundColor = randomColor();
+  console.log('CONTAINER', e.target, e.currentTarget);
+});
+document.querySelector('.nav').addEventListener(
+  'click',
+  function (e) {
+    this.style.backgroundColor = randomColor();
+    console.log('NAV', e.target, e.currentTarget);
+  }
+  // true
+);
+*/
