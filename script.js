@@ -137,8 +137,24 @@ const handleHover = function (e) {
   }
 };
 
+// Passing "argument" into handler
 nav.addEventListener('mouseover', handleHover.bind(0.5));
 nav.addEventListener('mouseout', handleHover.bind(1));
+
+///////////////////////////////////////
+// Sticky Navigation
+
+// Not a good way to add sticky navigation as it is not good for performance.
+const initialCoords = section1.getBoundingClientRect();
+console.log(initialCoords);
+
+window.addEventListener('scroll', function () {
+  if (window.scrollY > initialCoords.top) {
+    nav.classList.add('sticky');
+  } else {
+    nav.classList.remove('sticky');
+  }
+});
 
 ////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////
