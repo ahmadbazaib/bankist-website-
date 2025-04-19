@@ -10,6 +10,7 @@ const tabsContainer = document.querySelector('.operations__tab-container');
 const tabs = document.querySelectorAll('.operations__tab');
 const tabsContent = document.querySelectorAll('.operations__content');
 const nav = document.querySelector('.nav');
+const header = document.querySelector('header');
 
 ///////////////////////////////////////
 // Modal window
@@ -145,16 +146,48 @@ nav.addEventListener('mouseout', handleHover.bind(1));
 // Sticky Navigation
 
 // Not a good way to add sticky navigation as it is not good for performance.
-const initialCoords = section1.getBoundingClientRect();
-console.log(initialCoords);
+// const initialCoords = section1.getBoundingClientRect();
+// console.log(initialCoords);
 
-window.addEventListener('scroll', function () {
-  if (window.scrollY > initialCoords.top) {
+// window.addEventListener('scroll', function () {
+//   if (window.scrollY > initialCoords.top) {
+//     nav.classList.add('sticky');
+//   } else {
+//     nav.classList.remove('sticky');
+//   }
+// });
+
+//Sticky Navigation: Intersection Observer
+// const obsCallBack = function (entries, observer) {
+//   entries.forEach(entry => console.log(entry));
+// };
+// const obsOptions = {
+//   root: null,
+//   threshold: [0, 0.2],
+// };
+// const observer = new IntersectionObserver(obsCallBack, obsOptions);
+// observer.observe(section1);
+
+// Better Way
+const navHeight = nav.getBoundingClientRect().height;
+// console.log(navHeight);
+
+const stickyNav = function (entries) {
+  const [entry] = entries;
+  // console.log(entry);
+
+  if (!entry.isIntersecting) {
     nav.classList.add('sticky');
   } else {
     nav.classList.remove('sticky');
   }
+};
+const headerObserver = new IntersectionObserver(stickyNav, {
+  root: null,
+  threshold: 0,
+  rootMargin: `-${navHeight}px`,
 });
+headerObserver.observe(header);
 
 ////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////
