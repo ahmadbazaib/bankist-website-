@@ -515,13 +515,15 @@ console.log(h1.parentElement.children);
 });
 */
 
-document.addEventListener('DOMContentLoaded', function (e) {
-  console.log('HTML parsed and DOM tree built', e);
-});
+//////////////////////////////////////////////
+// LIFECYCLE DOM EVENTS
+// document.addEventListener('DOMContentLoaded', function (e) {
+//   console.log('HTML parsed and DOM tree built', e);
+// });
 
-window.addEventListener('load', function (e) {
-  console.log('Web page fully loaded', e);
-});
+// window.addEventListener('load', function (e) {
+//   console.log('Web page fully loaded', e);
+// });
 
 // window.addEventListener('beforeunload', function (e) {
 //   e.preventDefault();
